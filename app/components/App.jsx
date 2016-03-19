@@ -5,7 +5,7 @@ import Notes from './Notes.jsx';
 export default class App extends React.Component{
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
 			notes: [
 				{
@@ -27,8 +27,17 @@ export default class App extends React.Component{
 		const notes = this.state.notes;
 		return (
 			<div>
+				<button className="add-note" onClick={this.addNote}>+</button>
 				<Notes items={notes} />
 			</div>
 		);
+	}
+	addNote = () => {
+		this.setState({
+			notes:this.state.notes.concat([{
+				id: uuid.v4(),
+				task: 'New task'
+			}])
+		});
 	}
 }
