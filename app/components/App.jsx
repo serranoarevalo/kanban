@@ -1,9 +1,11 @@
-import uuid from 'node-uuid';
 import React from 'react';
 import Notes from './Notes.jsx';
 import NoteActions from '../actions/NoteActions';
 import NoteStore from '../stores/NoteStore';
 import AltContainer from 'alt-container';
+import LaneActions from '../actions/LaneActions';
+import LaneStore from '../stores/LaneStore';
+import Lanes from './Lanes.jsx'
 
 export default class App extends React.Component{
 	constructor(props) {
@@ -31,10 +33,13 @@ export default class App extends React.Component{
 						items: () => NoteStore.getState().notes
 					}}
 				>
-					<Notes items={notes} onEdit={this.editNote} onDelete={this.deleteNote} />
+				<Lanes />
 				</AltContainer>
 			</div>
 		);
+	}
+	addItem(){
+		LaneActions.create({name: 'New lane'});
 	}
 	addNote() {
 		NoteActions.create({task: 'New task'});
