@@ -3,6 +3,7 @@ import React from 'react';
 import Notes from './Notes.jsx';
 import NoteActions from '../actions/NoteActions';
 import NoteStore from '../stores/NoteStore';
+import AltContainer from 'alt-container';
 
 export default class App extends React.Component{
 	constructor(props) {
@@ -24,17 +25,24 @@ export default class App extends React.Component{
 		return (
 			<div>
 				<button className="add-note" onClick={this.addNote}>+</button>
-				<Notes items={notes} onEdit={this.editNote} onDelete={this.deleteNote} />
+				<AltContainer
+					stores={[NoteStore]}
+					inject={{
+						items: () => NoteStore.getState().notes
+					}}
+				>
+					<Notes items={notes} onEdit={this.editNote} onDelete={this.deleteNote} />
+				</AltContainer>
 			</div>
 		);
 	}
-	addNote = (noteId, task) => {
+	addNote() {
 		NoteActions.create({task: 'New task'});
 	}
 	editNote(id, task) {
-		NoteActions.update({id, taks});
+		NoteActions.update({id, task});
 	}
-	deleteNote = (id) => {
+	deleteNote(id) {
 		NoteActions.delete(id);
 	}
 }
