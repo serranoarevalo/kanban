@@ -40,7 +40,14 @@ export default class App extends React.Component{
 			}])
 		});
 	}
-	editNote(noteId, task) {
-		console.log('note edited', noteId, task);
+	editNote = (id, task) => {
+		const notes = this.state.notes.map((note) => {
+			if(note.id === id) {
+				note.task = task;
+			}
+			return note;
+		});
+
+		this.setState({notes});
 	}
 }
