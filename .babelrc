@@ -15,7 +15,7 @@
           }]
         }],
         ["transform-class-properties"],
-        ["transform-decorators"],
+        ["transform-decorators-legacy"],
         ["transform-object-rest-spread"]
       ]
     }
