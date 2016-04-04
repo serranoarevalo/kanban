@@ -19,10 +19,25 @@ class LaneStore{
 			lanes: lanes.concat(lane)
 		});
 	}
+	update({id, name}) {
+		const lanes = this.lanes.map((lane) => {
+			if(lane.id === id) {
+				lane.name = name;
+			}
+
+			return lane;
+		});
+
+		this.setState({lanes});
+	}
+	delete(id) {
+		this.setState({
+			lanes: this.lanes.filter((lane) => lane.id !== id)
+		});
+	}
 	attachToLane({laneId, noteId}) {
 		if(!noteId) {
 			this.waitFor(NoteStore);
-			console.log(NoteStore.getState().notes);
 			noteId = NoteStore.getState().notes.slice(-1)[0].id;
 		}
 
@@ -41,7 +56,7 @@ class LaneStore{
 	}
 	detachFromLane({laneId, noteId}) {
 		const lanes = this.lanes.map((lane) => {
-			if(lane.id === landeId) {
+			if(lane.id === laneId) {
 				lane.notes = lane.notes.filter((note) => note !== noteId);
 			}
 			return lane;
