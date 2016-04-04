@@ -6,8 +6,17 @@
   ],
   "env": {
     "start": {
-      "presets": [
-        "react-hmre"
+      "plugins": [
+        ["react-transform", {
+          "transforms": [{
+            "transform": "react-transform-hmr",
+            "imports": ["react"],
+            "locals": ["module"]
+          }]
+        }],
+        ["transform-class-properties"],
+        ["transform-decorators"],
+        ["transform-object-rest-spread"]
       ]
     }
   }
