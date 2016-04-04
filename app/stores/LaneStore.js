@@ -22,6 +22,7 @@ class LaneStore{
 	attachToLane({laneId, noteId}) {
 		if(!noteId) {
 			this.waitFor(NoteStore);
+			console.log(NoteStore.getState().notes);
 			noteId = NoteStore.getState().notes.slice(-1)[0].id;
 		}
 
@@ -32,6 +33,16 @@ class LaneStore{
 			}
 			else {
 				console.warn('Already attached note to lane', lanes);
+			}
+			return lane;
+		});
+
+		this.setState({lanes});
+	}
+	detachFromLane({laneId, noteId}) {
+		const lanes = this.lanes.map((lane) => {
+			if(lane.id === landeId) {
+				lane.notes = lane.notes.filter((note) => note !== noteId);
 			}
 			return lane;
 		});
