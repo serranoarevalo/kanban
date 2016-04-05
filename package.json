@@ -7,7 +7,9 @@
     "deploy": "gh-pages -d build",
     "stats": "webpack --profile --json > stats.json",
     "build": "webpack",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "test": "karma start",
+    "tdd": "karma start --auto-watch --no-single-run"
   },
   "keywords": [
     "webpack",
@@ -28,8 +30,24 @@
     "gh-pages": "^0.10.0",
     "html-webpack-plugin": "^2.8.1",
     "html-webpack-template": "^4.0.0",
+    "isparta-instrumenter-loader": "^1.0.0",
+    "jshint": "^2.9.1",
+    "jshint-loader": "^0.8.3",
+    "karma": "^0.13.21",
+    "karma-coverage": "^0.5.3",
+    "karma-mocha": "^0.2.1",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.24",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.4.5",
+    "node-sass": "^3.4.2",
     "npm-install-webpack-plugin": "^2.0.2",
-    "style-loader": "^0.13.0",
+    "phantomjs-polyfill": "0.0.1",
+    "phantomjs-prebuilt": "^2.1.4",
+    "react-addons-test-utils": "^0.14.7",
+    "react-dnd-test-backend": "^1.0.2",
+    "sass-loader": "^3.2.0",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.7.3"
@@ -43,6 +61,7 @@
     "react-addons-update": "^0.14.7",
     "react-dnd": "^2.1.0",
     "react-dnd-html5-backend": "^2.1.2",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "style-loader": "^0.13.0"
   }
 }
